@@ -12,28 +12,30 @@
             margin: 0;
         }
 
-        .loader {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .loading-text {
+            font-size: 24px;
         }
     </style>
     <script>
-        setTimeout(function() {
-            window.location.href = "https://nekodevteam.github.io/NekoDev/Home";
-        }, 3000); // รอเป็นเวลา 3 วินาที (3000 มิลลิวินาที) ก่อนที่จะ redirect
+        document.addEventListener("DOMContentLoaded", function() {
+            var loadingText = document.querySelector(".loading-text");
+            var loadingDots = 0;
+
+            setInterval(function() {
+                loadingDots = (loadingDots + 1) % 4; // 0, 1, 2, 3
+                var dots = Array(loadingDots + 1).join('.'); // จำนวนจุดตาม loadingDots
+
+                loadingText.textContent = "Loading" + dots;
+            }, 500); // แสดงการเปลี่ยนรูปแบบทุก 0.5 วินาที
+            
+            setTimeout(function() {
+                window.location.href = "https://nekodevteam.github.io/NekoDev/Home";
+            }, 3000); // รอเป็นเวลา 3 วินาที (3000 มิลลิวินาที) ก่อนที่จะ redirect
+        });
     </script>
 </head>
 <body>
-    <div class="loader"></div>
+    <p class="loading-text">Loading.</p>
     <p>If you are not redirected, <a href="https://nekodevteam.github.io/NekoDev/Home">click here</a>.</p>
 </body>
 </html>
