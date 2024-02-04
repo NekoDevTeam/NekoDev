@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Loading Example</title>
+</head>
+<body>
+
+  <div id="data-container"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetchData();
+    });
+
+    function fetchData() {
+      // Replace 'your-api-endpoint' with the actual endpoint on your server
+      fetch('https://nekodevteam.github.io/NekoDev/Home')
+        .then(response => response.text())
+        .then(data => {
+          // Handle the fetched data, you can parse it or insert it into the DOM
+          document.getElementById('data-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+  </script>
+
+</body>
+</html>
