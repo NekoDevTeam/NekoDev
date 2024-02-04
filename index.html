@@ -10,10 +10,15 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column; /* เพิ่ม flex-direction เพื่อให้ข้อความแสดงต่อหน้ากัน */
         }
 
         .loading-text {
             font-size: 24px;
+        }
+
+        .skip-link {
+            margin-top: 10px; /* เพิ่มระยะห่างของลิงก์ Skip */
         }
     </style>
     <script>
@@ -36,6 +41,6 @@
 </head>
 <body>
     <p class="loading-text">Loading.</p>
-    <p Skip, <a href="https://nekodevteam.github.io/NekoDev/Home">click here</a>.</p>
+    <p class="skip-link">Skip, <a href="https://nekodevteam.github.io/NekoDev/Home">click here</a>.</p>
 </body>
 </html>
