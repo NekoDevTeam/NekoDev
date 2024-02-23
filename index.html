@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Mode Example</title>
+    <title>Top Bar Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 2rem;
-            transition: background-color 0.5s ease;
         }
 
         #toolbar {
@@ -30,35 +29,41 @@
             cursor: pointer;
             border-radius: 0.25rem;
         }
+
+        select {
+            background-color: white;
+            color: #333;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div id="toolbar">
-        <h1>Dark Mode Example</h1>
-        <button id="darkModeButton">Dark Mode</button>
+        <button id="homeButton">Home</button>
+        <select id="languageSelect">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+        </select>
     </div>
-    <p>Toggle the dark mode button to change the background color.</p>
+    <p>Select an option from the dropdown menu.</p>
 
     <script>
-        const body = document.body;
-        const button = document.getElementById('darkModeButton');
+        const select = document.getElementById('languageSelect');
+        const button = document.getElementById('homeButton');
+
+        select.addEventListener('change', () => {
+            const selectedOption = select.options[select.selectedIndex].value;
+            alert(`You selected: ${selectedOption}`);
+        });
 
         button.addEventListener('click', () => {
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                button.textContent = 'Dark Mode';
-            } else {
-                body.classList.add('dark');
-                button.textContent = 'Light Mode';
-            }
+            alert('You clicked the Home button!');
         });
     </script>
-
-    <style>
-        .dark {
-            background-color: #333;
-            color: white;
-        }
-    </style>
 </body>
 </html>
