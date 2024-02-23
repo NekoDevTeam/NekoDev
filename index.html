@@ -3,67 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Bar Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 2rem;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
         }
 
-        #toolbar {
+        .navbar {
+            overflow: hidden;
             background-color: #333;
-            color: white;
-            padding: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        button {
-            background-color: transparent;
-            border: none;
+        .navbar a {
+            float: left;
+            display: block;
             color: white;
-            padding: 0.5rem 1rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 0.25rem;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
         }
 
-        select {
-            background-color: white;
-            color: #333;
-            border: none;
-            border-radius: 0.25rem;
-            padding: 0.25rem 0.5rem;
-            margin-left: 1rem;
-            cursor: pointer;
+        .navbar a:hover {
+            border-bottom-color: #ffffff;
+        }
+
+        .content {
+            padding: 16px;
         }
     </style>
 </head>
 <body>
-    <div id="toolbar">
-        <button id="homeButton">Home</button>
-        <select id="languageSelect">
-            <option value="html">HTML</option>
-            <option value="css">CSS</option>
-            <option value="javascript">JavaScript</option>
-        </select>
-    </div>
-    <p>Select an option from the dropdown menu.</p>
 
-    <script>
-        const select = document.getElementById('languageSelect');
-        const button = document.getElementById('homeButton');
+<div class="navbar">
+    <a href="#" onclick="changeContent('home')">Home</a>
+    <a href="#" onclick="changeContent('about')">About</a>
+    <a href="#" onclick="changeContent('services')">Services</a>
+    <a href="#" onclick="changeContent('contact')">Contact</a>
+</div>
 
-        select.addEventListener('change', () => {
-            const selectedOption = select.options[select.selectedIndex].value;
-            alert(`You selected: ${selectedOption}`);
+<div class="content" id="homeContent">
+    <h2>Home</h2>
+    <p>Welcome to our homepage.</p>
+</div>
+
+<div class="content" id="aboutContent" style="display: none;">
+    <h2>About</h2>
+    <p>Learn more about our company.</p>
+</div>
+
+<div class="content" id="servicesContent" style="display: none;">
+    <h2>Services</h2>
+    <p>Discover the services we offer.</p>
+</div>
+
+<div class="content" id="contactContent" style="display: none;">
+    <h2>Contact</h2>
+    <p>Get in touch with us.</p>
+</div>
+
+<script>
+    function changeContent(tab) {
+        // Hide all content divs
+        document.querySelectorAll('.content').forEach(content => {
+            content.style.display = 'none';
         });
 
-        button.addEventListener('click', () => {
-            alert('You clicked the Home button!');
+        // Show the selected content
+        document.getElementById(tab + 'Content').style.display = 'block';
+
+        // Reset the border-bottom for all tabs
+        document.querySelectorAll('.navbar a').forEach(tab => {
+            tab.style.borderBottomColor = 'transparent';
         });
-    </script>
+
+        // Set the border-bottom for the selected tab
+        document.querySelector('.navbar a[href="#"]').style.borderBottomColor = '#ffffff';
+    }
+</script>
+
 </body>
 </html>
