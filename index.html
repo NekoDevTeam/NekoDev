@@ -3,39 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Tap Example</title>
+    <title>Dark Mode Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 2rem;
+            transition: background-color 0.5s ease;
         }
+
+        #toolbar {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         button {
-            background-color: dodgerblue;
+            background-color: transparent;
             border: none;
             color: white;
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 1rem;
             text-transform: uppercase;
             cursor: pointer;
             border-radius: 0.25rem;
-            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
-    <h1>Tap (or Click) the Button</h1>
-    <button id="tapButton">Tap Me</button>
+    <div id="toolbar">
+        <h1>Dark Mode Example</h1>
+        <button id="darkModeButton">Dark Mode</button>
+    </div>
+    <p>Toggle the dark mode button to change the background color.</p>
 
     <script>
-        const button = document.getElementById('tapButton');
+        const body = document.body;
+        const button = document.getElementById('darkModeButton');
 
         button.addEventListener('click', () => {
-            alert('You tapped the button!');
-        });
-
-        button.addEventListener('touchstart', () => {
-            alert('You tapped the button!');
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                button.textContent = 'Dark Mode';
+            } else {
+                body.classList.add('dark');
+                button.textContent = 'Light Mode';
+            }
         });
     </script>
+
+    <style>
+        .dark {
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </body>
 </html>
