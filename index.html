@@ -2,45 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Loading...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Tap Example</title>
     <style>
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column; /* เพิ่ม flex-direction เพื่อให้ข้อความแสดงต่อหน้ากัน */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2rem;
         }
-
-        .loading-text {
-            font-size: 24px;
-        }
-
-        .skip-link {
-            margin-top: 10px; /* เพิ่มระยะห่างของลิงก์ Skip */
+        button {
+            background-color: dodgerblue;
+            border: none;
+            color: white;
+            padding: 0.5rem 2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            margin-top: 1rem;
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var loadingText = document.querySelector(".loading-text");
-            var loadingDots = 0;
-
-            setInterval(function() {
-                loadingDots = (loadingDots + 1) % 4; // 0, 1, 2, 3
-                var dots = Array(loadingDots + 1).join('.'); // จำนวนจุดตาม loadingDots
-
-                loadingText.textContent = "Loading" + dots;
-            }, 500); // แสดงการเปลี่ยนรูปแบบทุก 0.5 วินาที
-            
-            setTimeout(function() {
-                window.location.href = "https://nekodevteam.github.io/NekoDev/Home";
-            }, 1000); // รอเป็นเวลา 1 วินาที (1000 มิลลิวินาที) ก่อนที่จะ redirect
-        });
-    </script>
 </head>
 <body>
-    <p class="loading-text">Loading.</p>
-    <p class="skip-link">Skip, <a href="https://nekodevteam.github.io/NekoDev/Home">click here</a>.</p>
+    <h1>Tap (or Click) the Button</h1>
+    <button id="tapButton">Tap Me</button>
+
+    <script>
+        const button = document.getElementById('tapButton');
+
+        button.addEventListener('click', () => {
+            alert('You tapped the button!');
+        });
+
+        button.addEventListener('touchstart', () => {
+            alert('You tapped the button!');
+        });
+    </script>
 </body>
 </html>
