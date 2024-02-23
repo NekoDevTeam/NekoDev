@@ -14,11 +14,11 @@
         .navbar {
             overflow: hidden;
             background-color: #333;
+            display: flex;
+            justify-content: space-around;
         }
 
         .navbar a {
-            float: left;
-            display: block;
             color: white;
             text-align: center;
             padding: 14px 16px;
@@ -38,51 +38,31 @@
 <body>
 
 <div class="navbar">
-    <a href="#" onclick="changeContent('home')">Home</a>
-    <a href="#" onclick="changeContent('about')">About</a>
-    <a href="#" onclick="changeContent('services')">Services</a>
-    <a href="#" onclick="changeContent('contact')">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
 </div>
 
-<div class="content" id="homeContent">
+<div class="content" id="home">
     <h2>Home</h2>
     <p>Welcome to our homepage.</p>
 </div>
 
-<div class="content" id="aboutContent" style="display: none;">
+<div class="content" id="about" style="display: none;">
     <h2>About</h2>
     <p>Learn more about our company.</p>
 </div>
 
-<div class="content" id="servicesContent" style="display: none;">
+<div class="content" id="services" style="display: none;">
     <h2>Services</h2>
     <p>Discover the services we offer.</p>
 </div>
 
-<div class="content" id="contactContent" style="display: none;">
+<div class="content" id="contact" style="display: none;">
     <h2>Contact</h2>
     <p>Get in touch with us.</p>
 </div>
-
-<script>
-    function changeContent(tab) {
-        // Hide all content divs
-        document.querySelectorAll('.content').forEach(content => {
-            content.style.display = 'none';
-        });
-
-        // Show the selected content
-        document.getElementById(tab + 'Content').style.display = 'block';
-
-        // Reset the border-bottom for all tabs
-        document.querySelectorAll('.navbar a').forEach(tab => {
-            tab.style.borderBottomColor = 'transparent';
-        });
-
-        // Set the border-bottom for the selected tab
-        document.querySelector('.navbar a[href="#"]').style.borderBottomColor = '#ffffff';
-    }
-</script>
 
 </body>
 </html>
