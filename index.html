@@ -2,24 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conditional Link</title>
 </head>
 <body>
 
 <script>
-    // Get the value of the 'wi' parameter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const wi = urlParams.get('#Wi');
+    // Function to parse the URL parameters
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
 
-    // Check the value of 'wi' and redirect accordingly
-    if (wi === 'discord') {
+    // Get the value of the 'wi' parameter from the URL
+    var wiValue = getParameterByName('wi');
+
+    // Redirect based on the 'wi' parameter value
+    if (wiValue === 'ae') {
         window.location.href = 'https://discord.com/channels/@me';
-    } else if (wi === 'Neko') {
-        window.location.href = 'https://nekodevteam.github.io/NekoDev/';
+    } else if (wiValue === 'oow') {
+        window.location.href = 'https://nekodevteam.github.io/NekoDev/home';
     } else {
-        // Default redirection
-        window.location.href = 'https://github.com/NekoDevTeam/NekoDev';
+        // Redirect to a default URL for other 'wi' values or when 'wi' is not present
+        window.location.href = 'https://nekodevteam.github.io/NekoDev/home';
     }
 </script>
 
