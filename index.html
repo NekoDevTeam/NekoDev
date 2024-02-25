@@ -4,15 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Add your styles for active link here */
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Add your styles for the active link here */
+        nav a.active {
+            color: #fff;
+            background-color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link" onclick="setActive('home')">Home</a></li>
+                <li><a href="#about" class="nav-link" onclick="setActive('about')">About</a></li>
+                <li><a href="#services" class="nav-link" onclick="setActive('services')">Services</a></li>
+                <li><a href="#contact" class="nav-link" onclick="setActive('contact')">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -20,27 +79,66 @@
     <main>
         <section id="home">
             <h1>Welcome to Company Name</h1>
-            <!-- Add content here -->
+            <p>This is the homepage of our website. Add your introductory content here.</p>
         </section>
 
         <section id="about">
             <h1>About Us</h1>
-            <!-- Add content here -->
+            <p>Provide information about your company and its history. You can also add details about your team.</p>
         </section>
 
         <section id="services">
             <h1>Our Services</h1>
-            <!-- Add content here -->
+            <p>List and describe the services your company offers. Use this section to showcase what sets you apart.</p>
         </section>
 
         <section id="contact">
             <h1>Get in Touch</h1>
-            <!-- Add content here -->
+            <p>Include contact information and a form for visitors to reach out to your company.</p>
         </section>
     </main>
 
     <footer>
-        <!-- Add footer content here -->
+        <p>&copy; 2024 Company Name. All rights reserved.</p>
     </footer>
+
+    <script>
+        function setActive(sectionId) {
+            // Remove the 'active' class from all links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Add the 'active' class to the clicked link
+            const clickedLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            clickedLink.classList.add('active');
+
+            // Set or update a cookie with the active section
+            document.cookie = `activeSection=${sectionId}; expires=${new Date(Date.now() + 86400000).toUTCString()}; path=/`;
+        }
+
+        // Set active link based on cookie when the page loads
+        window.addEventListener('load', () => {
+            const activeSection = getCookie('activeSection');
+            if (activeSection) {
+                setActive(activeSection);
+            }
+        });
+
+        function getCookie(cookieName) {
+            const name = `${cookieName}=`;
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const cookieArray = decodedCookie.split(';');
+            for (let i = 0; i < cookieArray.length; i++) {
+                let cookie = cookieArray[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(name) === 0) {
+                    return cookie.substring(name.length, cookie.length);
+                }
+            }
+            return '';
+        }
+    </script>
 </body>
 </html>
