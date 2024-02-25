@@ -20,16 +20,16 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    // Get the value of the 'wi' parameter from the URL
+    // Get the value of the '#wi' parameter from the URL
     var wiValue = getParameterByName('#wi');
 
-    // Redirect based on the 'wi' parameter value
+    // Redirect based on the '#wi' parameter value
     if (wiValue === 'ae') {
         window.location.href = 'https://github.com/NekoDevTeam/NekoDev#' + window.location.hash;
     } else if (wiValue === 'oow') {
         window.location.href = 'https://nekodevteam.github.io/NekoDev/' + window.location.hash;
     } else {
-        // Redirect to a default URL for other 'wi' values or when 'wi' is not present
+        // Redirect to a default URL for other '#wi' values or when '#wi' is not present
         window.location.href = 'https://example.com/default' + window.location.hash;
     }
 </script>
