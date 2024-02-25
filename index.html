@@ -25,12 +25,12 @@
 
     // Redirect based on the 'wi' parameter value
     if (wiValue === 'ae') {
-        window.location.href = 'https://discord.com/channels/@me';
+        window.location.href = 'https://discord.com/channels/@me' + window.location.hash;
     } else if (wiValue === 'oow') {
-        window.location.href = 'https://nekodevteam.github.io/NekoDev/home';
+        window.location.href = 'https://nekodevteam.github.io/NekoDev/' + window.location.hash;
     } else {
         // Redirect to a default URL for other 'wi' values or when 'wi' is not present
-        window.location.href = 'https://nekodevteam.github.io/NekoDev/home';
+        window.location.href = 'https://example.com/default' + window.location.hash;
     }
 </script>
 
