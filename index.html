@@ -5,33 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conditional Link</title>
-    <script>
-        // Function to parse the URL parameters
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
-
-        // Get the value of the '#wi' parameter from the URL
-        var wiValue = getParameterByName('#wi');
-
-        // Redirect based on the '#wi' parameter value
-        if (wiValue === 'ae') {
-            window.location.href = 'https://github.com/NekoDevTeam/NekoDev#' + window.location.hash;
-        } else if (wiValue === 'oow') {
-            window.location.href = 'https://nekodevteam.github.io/NekoDev/' + window.location.hash;
-        } else if (wiValue === 'other') {
-            // Redirect to a default URL for other '#wi' values or when '#wi' is not present
-            window.location.href = 'https://example.com/default' + window.location.hash;
-        }
-    </script>
 </head>
 <body>
-    <!-- Add some content here if needed -->
+
+<script>
+    // Function to parse the URL parameters
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Get the value of the '#wi' parameter from the URL
+    var wiValue = getParameterByName('#wi');
+
+    // Check if the current URL is exactly 'nekodevteam.github.io/NekoDev/#wi=ae'
+    if (window.location.href === 'https://nekodevteam.github.io/NekoDev/#wi=ae') {
+        // Do nothing, maintain the current URL
+    } else if (wiValue === 'ae') {
+        // Redirect to 'https://nekodevteam.github.io/NekoDev/#wi=ae'
+        window.location.href = 'https://nekodevteam.github.io/NekoDev/#wi=ae';
+    } else if (wiValue === 'oow') {
+        // Redirect to 'https://nekodevteam.github.io/NekoDev/' for 'oow'
+        window.location.href = 'https://nekodevteam.github.io/NekoDev/' + window.location.hash;
+    } else {
+        // Redirect to a default URL for other '#wi' values or when '#wi' is not present
+        window.location.href = 'https://example.com/default' + window.location.hash;
+    }
+</script>
+
 </body>
 </html>
