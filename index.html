@@ -23,18 +23,18 @@
     // Get the value of the '#wi' parameter from the URL
     var wiValue = getParameterByName('#wi');
 
-    // Check if the current URL is exactly 'nekodevteam.github.io/NekoDev/#wi=ae'
+    // Redirect based on the '#wi' parameter value
     if (window.location.href === 'https://nekodevteam.github.io/NekoDev/#wi=ae') {
         // Do nothing, maintain the current URL
     } else if (wiValue === 'ae') {
-        // Redirect to 'https://nekodevteam.github.io/NekoDev/#wi=ae'
-        window.location.href = 'https://nekodevteam.github.io/NekoDev/#wi=ae';
+        // Redirect to 'https://your-specific-link-for-ae'
+        window.location.href = 'https://your-specific-link-for-ae';
     } else if (wiValue === 'oow') {
         // Redirect to 'https://nekodevteam.github.io/NekoDev/' for 'oow'
         window.location.href = 'https://nekodevteam.github.io/NekoDev/' + window.location.hash;
     } else {
-        // Redirect to a default URL for other '#wi' values or when '#wi' is not present
-        window.location.href = 'https://example.com/default' + window.location.hash;
+        // Redirect to 'https://nekodevteam.github.io/NekoDev/' for other '#wi' values or when '#wi' is not present
+        window.location.href = 'https://nekodevteam.github.io/NekoDev/';
     }
 </script>
 
